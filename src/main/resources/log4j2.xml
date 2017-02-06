@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="ERROR">
+    <Appenders>
+        <Console name="Console">
+            <PatternLayout pattern="%highlight{%d{yyyy-MM-dd HH:mm:ss.SSS} %C.%M [%t] %-5level %logger{360} - %m%n}"/>
+        </Console>
+        <File name="File" fileName="/file/springboot/springboot.log">
+            <PatternLayout>
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %C.%M [%t] %-5level %logger{360} - %m%n</pattern>
+            </PatternLayout>
+        </File>
+        <File name="FileTest" fileName="/file/springboot/test/springboot.log">
+            <PatternLayout>
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %m%n</pattern>
+            </PatternLayout>
+        </File>
+
+        <RollingFile name="RollingFile" fileName="/file/springboot/app1.log" filePattern="/file/springboot/app1-%d{yyyyMMddHHmmssSS}.log.gz"
+                     ignoreExceptions="true">
+            <PatternLayout>
+                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+            </PatternLayout>
+            <SizeBasedTriggeringPolicy size="50K" />
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Root level="DEBUG">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="File"></AppenderRef>
+        </Root>
+
+    </Loggers>
+</Configuration>
